@@ -1,0 +1,23 @@
+body{
+    background-color: #334c8c;
+    color: white;
+    text-align: center;
+}
+
+
+h4{
+    margin-bottom: 40px;
+}
+
+button{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #e0b300;
+}
+
+input{
+    margin-bottom: 15px;
+    background-color: #e0b300;
+}

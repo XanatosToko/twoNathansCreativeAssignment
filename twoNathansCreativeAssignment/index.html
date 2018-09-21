@@ -3,17 +3,137 @@
   <head>
       <link rel="stylesheet" type="text/css" href="main.css">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      
-      <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
+      
+      <h1>It's a Mad Story Maker</h1>
+      
+      <h4>By Nathan Tucker and Nathan Moser</h4>
+      
+      <h2>Ready to ad-lib? Get writing!</h2>
+      
+      
+      <form>
+          Name: <input type="text" id="word1"><br>
+          Plain intransitive verb (ex. jog): <input type ="text" id="word2"><br>
+          Type/name of class/course: <input type="text" id="word3"><br>
+          Adjective or noun: <input type="text" id="word4"><br>
+          Past tense, transitive verb (ex. punched): <input type ="text" id="word5"><br>
+          Past tense, intransitive verb (ex. jogged): <input type="text" id="word6"><br>
+          Noun: <input type="text" id="word7"><br>
+          Past tense, transitive verb: <input type ="text" id="word8"><br>
+          Adverb: <input type="text" id="word9"><br>
+          Occupation: <input type="text" id="word10"><br>
+          Plain transitive verb (ex. punch): <input type="text" id="word11"><br>
+          Adjective: <input type="text" id="word12"><br>
+          Plural noun: <input type="text" id="word13"><br>
+      </form>
+      
+      <button onclick="madLibs1(event)">Mad Story 1</button>
+      <button onClick="madLibs2(event)">Mad Story 2</button>
+      <button onClick="madLibs3(event)">Mad Story 3</button>
+      
+      <p id="madLibsCompleted"></p>
+      
+      <script>
+          
+          function madLibs1(event){
+              var part1 = "Once upon a time, a BYU student named ";
+              var part2 = " decided to ";
+              var part3 = " on their way to ";
+              var part4 = " class. On their way, they happened to find themself blessed by a "
+              var part5 = " goddess. She turned to them and "
+              var part6 = " them on the cheek. They did not know what to do with themselves. Bewildered they "
+              var part7 = " for a couple minutes while she stared into their eyes. Then out of nowhere, a big "
+              var part8 = " appeared out of the HBLL and "
+              var part9 = " the student. The goddess began to wave "
+              var part10 = " at the other students passing by. One of them, a Computer Science "
+              var part11 = " rushed to the student to "
+              var part12 = " them, but it was too late. They were "
+              var part13 = ". The goddess cried for hours as the other "
+              var part14 = " went on their way."
+              document.getElementById("madLibsCompleted").innerHTML 
+              = part1 + document.getElementById("word1").value + part2 
+              + document.getElementById("word2").value + part3
+              + document.getElementById("word3").value + part4
+              + document.getElementById("word4").value + part5
+              + document.getElementById("word5").value + part6
+              + document.getElementById("word6").value + part7
+              + document.getElementById("word7").value + part8
+              + document.getElementById("word8").value + part9
+              + document.getElementById("word9").value + part10
+              + document.getElementById("word10").value + part11
+              + document.getElementById("word11").value + part12
+              + document.getElementById("word12").value + part13
+              + document.getElementById("word13").value + part14;
+              event.preventDefault();
+          }
+          
+          function madLibs2(event){
+              var part1 = "It was a nice peaceful day in the countryside where ";
+              var part2 = " lived. It was a nice place for a good ";
+              var part3 = ". One could forget all about their ";
+              var part4 = " test next Tuesday. The "
+              var part5 = " store nearby was hosting a party where people "
+              var part6 = " fine wines and "
+              var part7 = " to their hearts' content. A "
+              var part8 = " "
+              var part9 = " the clouds in the sky "
+              var part10 = ". Yes, it was a great place for a "
+              var part11 = " to really "
+              var part12 = " back. A "
+              var part13 = " day for all the "
+              var part14 = " of every age."
+              document.getElementById("madLibsCompleted").innerHTML 
+              = part1 + document.getElementById("word1").value + part2 
+              + document.getElementById("word2").value + part3 
+              + document.getElementById("word3").value + part4
+              + document.getElementById("word4").value + part5
+              + document.getElementById("word5").value + part6
+              + document.getElementById("word6").value + part7
+              + document.getElementById("word7").value + part8
+              + document.getElementById("word8").value + part9
+              + document.getElementById("word9").value + part10
+              + document.getElementById("word10").value + part11
+              + document.getElementById("word11").value + part12
+              + document.getElementById("word12").value + part13
+              + document.getElementById("word13").value + part14;
+              event.preventDefault();
+          }
+          
+          function madLibs3(event){
+              var part1 = "";
+              var part2 = " was sleeping peacefully, but a loud crash woke her from her slumber. She began to ";
+              var part3 = " across the room to her ";
+              var part4 = " enthusiast roommate who was oddly still asleep. Before she could get there, a wave of fear rushed over her as she heard the sound of a ";
+              var part5 = " goblin creeping up behind her. She hurried over to the dresser and grabbed a revolver. She "
+              var part6 = " it at the goblin in a panicked frenzy. Her roommate burst out of bed and "
+              var part7 = " to her friend's side. "
+              var part8 = " began to drip from the ceiling above the girls. They "
+              var part9 = " the dark room in horror, but then her roommate's boyfriend "
+              var part10 = " rushed in to help. He was a "
+              var part11 = " and knew how to "
+              var part12 = ". However, the ceiling was terribly "
+              var part13 = " and fell down upon them all. The "
+              var part14 = " found them in the aftermath."
+              document.getElementById("madLibsCompleted").innerHTML 
+              = part1 + document.getElementById("word1").value + part2 
+              + document.getElementById("word2").value + part3
+              + document.getElementById("word3").value + part4
+              + document.getElementById("word4").value + part5
+              + document.getElementById("word5").value + part6
+              + document.getElementById("word6").value + part7
+              + document.getElementById("word7").value + part8
+              + document.getElementById("word8").value + part9
+              + document.getElementById("word9").value + part10
+              + document.getElementById("word10").value + part11
+              + document.getElementById("word11").value + part12
+              + document.getElementById("word12").value + part13
+              + document.getElementById("word13").value + part14;
+              event.preventDefault();
+          }
+          
+      </script>
       
   </body>
 </html>

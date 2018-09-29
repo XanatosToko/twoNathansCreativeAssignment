@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>Weather JQuery Lab 2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Vollkorn" rel="stylesheet">
+        
+        
+        <script
+            src="http://code.jquery.com/jquery-3.2.1.min.js">
+        </script>
+        
+        
+        <script>
+            $(document).ready(function() {
+                $( "#cityField" ).keyup(function() {
+                    $.getJSON("http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q="+$("#cityField").val(),function(data) {
+                        var everything;
+                        everything = "<ul class=\"list-unstyled\">";
+                        $.each(data, function(i,item) {
+                            everything += "<li> "+data[i].city;
+                        });
+                        everything += "</ul>";
+                        $("#txtHint").html(everything);
+                    })
+                    .done(function() { console.log('getJSON request succeeded!'); })
+                    .fail(function(jqXHR, textStatus, errorThrown) { 
+                        console.log('getJSON request failed! ' + textStatus); 
+                        console.log("incoming "+jqXHR.responseText);
+                    })
+                    .always(function() { console.log('getJSON request ended!');
+                    });
+                });
+                
+                $("#weatherButton").click(function(e){
+                    var value = $("#cityField").val();
+                    console.log(value);
+                    $("#displayCity").text(value);
+                    e.preventDefault();
+                    var myurl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=ea5d2934261cc994391ac74cb835c6a7&q=";
+                    myurl += value;
+                    console.log(myurl);
+                    $.ajax({
+                        url : myurl,
+                        dataType : "json",
+                        success : function(data){
+                            console.log(data);
+                            var location = data['name'];
+                            var weather = data['weather'][0]['main'];
+                            var temp = data['main']['temp'];
+                            var weather_icon = data['weather'][0]['icon'];
+                            var humidity = data['main']['humidity'];
+                            var temp_min = data['main']['temp_min'];
+                            var temp_max = data['main']['temp_max'];
+                            var wind_speed = data['wind']['speed'];
+                            var everything = "<img src=\"http://openweathermap.org/img/w/" + weather_icon + ".png\"/>"
+                            everything += "<ul class=\"list-unstyled\">";
+                            everything += "<li>Location: " + location;
+                            everything += "<li>Weather: " + weather + " (" + temp + "&#8457;)";
+                            everything += "<li>Low: " + temp_min + "&#8457; | High: " + temp_max + "&#8457;";
+                            everything += "<li>Humidity: " + humidity + "%";
+                            everything += "<li>Wind: " + wind_speed + " mph";
+                            everything += "</ul>";
+                            $("#weather").html(everything);
+                        }
+                    })
+                });
+                
+                $("#searchButton").click(function(e){
+                    var value = $("#searchField").val();
+                    console.log(value);
+                    e.preventDefault();
+                    var myurl = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=";
+                    myurl += value;
+                    myurl += "&site=stackoverflow";
+                    console.log(myurl);
+                    $.ajax({
+                        url: myurl,
+                        dataType: "json",
+                        success: function(data){
+                            console.log(data);
+                            var items = data['items'];
+                            var everything = "<ul class=\"list-unstyled\">";
+                            $.each(items, function(i, item){
+                                everything += "<li> <a href=\"";
+                                everything += items[i].link;
+                                everything += "\">";
+                                everything += items[i].title;
+                                everything += "</a></li>";
+                            })
+                            everything += "</ul>";
+                            console.log(everything);
+                            $("#search").html(everything);
+                        }
+                    });
+                });
+                
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    </head>
+    
+    <body id="myPage">
+        
+        <div class="container-fluid bg-1">
+                <h2>Weather and Searching Stack Exchange</h2>
+                <p><em>A REST service practice project</em></p>
+        </div>
+        
+        <div class="container-fluid bg-2">
+            <div class="col-sm-6">
+                <br>
+                <h4 class="text-center">Cities and Weather</h4><br>
+                <a href="#citiesAndWeather" data-toggle="collapse">
+                    <img src="IMG_3057.JPG" class="clickMe" alt="sunrise">
+                </a>
+                <div id="citiesAndWeather" class="collapse">
+                    <br>
+                    <form>
+                        Enter A City: <input type="text" id="cityField" value=""><br>
+                        Suggestion: <span id="txtHint">Empty</span>
+                        <input id="weatherButton" class="button" type="button" value="Submit">
+                    </form>
+                    <p>City</p>
+                    <textarea id="displayCity">No City</textarea>
+                    <p>Current Weather</p>
+                    <div id="weather">No weather</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <h4 class="text-center">Stack Exchange Search</h4><br>
+                <a href="#stackExchangeSearch" data-toggle="collapse">
+                    <img src="IMG_3956.JPG" class="clickMe" alt="stack">
+                </a>
+                <div id="stackExchangeSearch" class="collapse">
+                    <br>
+                    <form>
+                        Enter A Search Term: <input type="text" id="searchField" value=""><br>
+                        <input id="searchButton" class="button" type="button" value="Submit">
+                    </form>
+                    
+                    <div id="search"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="text-center">
+            <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br><br>
+            <p>Created by Nathan Tucker for BYU CS 260</p>
+        </footer>
+        
+    </body>
+</html>
